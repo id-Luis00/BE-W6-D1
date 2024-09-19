@@ -64,6 +64,14 @@ public class DipendenteService {
         this.dipendenteRepository.deleteById(dipendenteId);
     }
 
+    public boolean existsByEmail(String email){
+        return this.dipendenteRepository.existsByEmail(email);
+    }
+
+    public Dipendente findByEmail(String email){
+        return this.dipendenteRepository.findByEmail(email).orElseThrow(() -> new NotFoundException("Dipendente con email " + email + " non è stato trovato"));
+    }
+
 
 
 

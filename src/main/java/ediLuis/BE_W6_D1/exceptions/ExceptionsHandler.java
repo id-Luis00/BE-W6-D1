@@ -31,5 +31,12 @@ public class ExceptionsHandler {
         return new ErrorsPayload(exception.getMessage(), LocalDateTime.now());
     }
 
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorsPayload handleRuntime(RuntimeException exception){
+        exception.printStackTrace();
+        return new ErrorsPayload(exception.getMessage(), LocalDateTime.now());
+    }
+
 
 }
